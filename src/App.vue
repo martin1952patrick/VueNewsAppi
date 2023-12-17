@@ -1,47 +1,61 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<template>
+  <div id="app">
+    <News :apiKey="apiKey" />
+  </div>
+</template>
+<script>
+import News from './components/News.vue'
+
+
+export default {
+  name: 'app',
+  data: () => {
+    return {
+      apiKey: 'fff38030af5042e7804545ace55ad955' // You need an API Key from newsapi.org
+    }
+  },
+  components: {
+    News
+  }
+}
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
-</template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
+<style lang="scss">
+  @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+  
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #80A248, #198B4D);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  #app {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    max-width: 480px;
+    height: 95%;
+    max-height: 1000px;
+    background-color: #fff;
+    /*
+    border: 2px solid #222;
+    border-radius: 20px;
+    box-shadow: 5px 10px 18px #222;
+    */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  ::-webkit-scrollbar {
+    display: none;
   }
-}
 </style>
